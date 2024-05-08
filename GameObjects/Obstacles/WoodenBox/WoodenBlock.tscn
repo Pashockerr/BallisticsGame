@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bioggbs76wigu"]
+
+[ext_resource type="PackedScene" uid="uid://bm0obrtef1sfc" path="res://GameObjects/Obstacles/BaseBlock/BaseBlock.tscn" id="1_he6ga"]
+[ext_resource type="Texture2D" uid="uid://oihjr4npwo7r" path="res://GameObjects/Obstacles/WoodenBox/Sprites/wooden_box.png" id="2_0hxcy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2ow1"]
+size = Vector2(50, 50)
+
+[node name="WoodenBlock" instance=ExtResource("1_he6ga")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_l2ow1")
+
+[node name="Sprite2D" parent="CollisionShape2D" index="0"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0hxcy")

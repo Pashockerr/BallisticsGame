@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8vdkbfe6e3b8"]
+
+[ext_resource type="Texture2D" uid="uid://cxp2tjokb47aq" path="res://GameObjects/Areas/WinArea/Sprites/target.png" id="1_ihpr7"]
+[ext_resource type="Script" path="res://GameObjects/Areas/WinArea/Scripts/WinArea.cs" id="1_lejkd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2g5gx"]
+size = Vector2(100, 100)
+
+[node name="WinArea" type="Area2D"]
+script = ExtResource("1_lejkd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1131, 652)
+shape = SubResource("RectangleShape2D_2g5gx")
+debug_color = Color(0.955084, 5.77569e-07, 0.545065, 0.42)
+
+[node name="Target" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("1_ihpr7")

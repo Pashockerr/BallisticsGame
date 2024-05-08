@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bdotqd2wdkvx1"]
+
+[node name="ProjectileLauncherInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+text = "Угол (град.) : "
+
+[node name="AngleLineEdit" type="LineEdit" parent="CenterContainer/HBoxContainer" groups=["ProjectileLauncherInterface"]]
+unique_name_in_owner = true
+layout_mode = 2
+expand_to_text_length = true
+
+[node name="Label2" type="Label" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+text = "Скорость (м/с) : "
+
+[node name="VelocityLineEdit" type="LineEdit" parent="CenterContainer/HBoxContainer" groups=["ProjectileLauncherInterface"]]
+unique_name_in_owner = true
+layout_mode = 2
+expand_to_text_length = true
+
+[node name="LaunchButton" type="Button" parent="CenterContainer/HBoxContainer" groups=["ProjectileLauncherInterface"]]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Запуск"

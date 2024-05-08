@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://4n75fa1fxmgo"]
+
+[ext_resource type="Script" path="res://Scripts/SwitchLevelButton.cs" id="1_pbber"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cv53l"]
+font_size = 50
+
+[node name="WinMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="WinMenuContainer" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinMenuContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="WinLabel" type="Label" parent="WinMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Победа!"
+label_settings = SubResource("LabelSettings_cv53l")
+
+[node name="NextLevelButton" type="Button" parent="WinMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Следующий уровень"
+
+[node name="ReplayLevelButton" type="Button" parent="WinMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Переиграть уровень"
+
+[node name="LevelsButton" type="Button" parent="WinMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Уровни"
+script = ExtResource("1_pbber")
+_levelName = "SelectLevels"
+
+[node name="MainMenuButton" type="Button" parent="WinMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Главное меню"
+script = ExtResource("1_pbber")

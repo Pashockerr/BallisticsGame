@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu11h34u3qdxx"]
+
+[ext_resource type="PackedScene" uid="uid://ct0i28nfm072l" path="res://UI/PauseMenu/PauseMenu.tscn" id="1_5lh33"]
+[ext_resource type="PackedScene" uid="uid://4n75fa1fxmgo" path="res://UI/WinMenu/WinMenu.tscn" id="2_sh5a1"]
+
+[node name="BaseLevel" type="Node2D"]
+
+[node name="PauseMenuLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="PauseMenuLayer" instance=ExtResource("1_5lh33")]
+
+[node name="WinMenuLayer" type="CanvasLayer" parent="."]
+
+[node name="WinMenu" parent="WinMenuLayer" instance=ExtResource("2_sh5a1")]
+
+[editable path="PauseMenuLayer/PauseMenu"]
+[editable path="WinMenuLayer/WinMenu"]

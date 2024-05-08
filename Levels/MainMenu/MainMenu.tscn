@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=3 uid="uid://do0jpv75a2sgv"]
+
+[ext_resource type="Script" path="res://Levels/MainMenu/Scripts/LevelsButton.cs" id="1_07sdq"]
+[ext_resource type="Texture2D" uid="uid://dcn7nnjkdqiji" path="res://icon.svg" id="2_4p5bs"]
+[ext_resource type="Script" path="res://Levels/MainMenu/Scripts/QuitGameButton.cs" id="2_sye1m"]
+[ext_resource type="Script" path="res://Levels/MainMenu/Scripts/TimeSlower.cs" id="3_y603o"]
+[ext_resource type="PackedScene" uid="uid://bioggbs76wigu" path="res://GameObjects/Obstacles/WoodenBox/WoodenBlock.tscn" id="4_6ssws"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u5b1i"]
+font_size = 50
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yy1ny"]
+size = Vector2(10000, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gnnyq"]
+radius = 25.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer"]
+layout_mode = 2
+
+[node name="GameNameLabel" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Ballistics game"
+label_settings = SubResource("LabelSettings_u5b1i")
+
+[node name="LevelsButton" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Уровни"
+script = ExtResource("1_07sdq")
+
+[node name="QuitGameButton" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Выйти из игры"
+script = ExtResource("2_sye1m")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(523, 715)
+shape = SubResource("RectangleShape2D_yy1ny")
+
+[node name="Cannonball" type="RigidBody2D" parent="."]
+mass = 50.0
+linear_velocity = Vector2(1500, -280)
+script = ExtResource("3_y603o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cannonball"]
+position = Vector2(150, 577)
+shape = SubResource("CircleShape2D_gnnyq")
+debug_color = Color(0, 0.648355, 0.183499, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="Cannonball/CollisionShape2D"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_4p5bs")
+
+[node name="Blocks" type="CanvasGroup" parent="."]
+
+[node name="WoodenBlock5" parent="Blocks" instance=ExtResource("4_6ssws")]
+position = Vector2(1137, 679)
+
+[node name="WoodenBlock" parent="Blocks" instance=ExtResource("4_6ssws")]
+position = Vector2(930, 679)
+
+[node name="WoodenBlock2" parent="Blocks" instance=ExtResource("4_6ssws")]
+position = Vector2(981, 679)
+
+[node name="WoodenBlock3" parent="Blocks" instance=ExtResource("4_6ssws")]
+position = Vector2(1033, 679)
+
+[node name="WoodenBlock4" parent="Blocks" instance=ExtResource("4_6ssws")]
+position = Vector2(1085, 679)
+
+[node name="WoodenBlock6" parent="Blocks" instance=ExtResource("4_6ssws")]
+position = Vector2(956, 629)
+
+[node name="WoodenBlock7" parent="Blocks" instance=ExtResource("4_6ssws")]
+position = Vector2(1007, 629)
+
+[node name="WoodenBlock8" parent="Blocks" instance=ExtResource("4_6ssws")]
+position = Vector2(1059, 629)
+
+[node name="WoodenBlock9" parent="Blocks" instance=ExtResource("4_6ssws")]
+position = Vector2(1111, 629)
+
+[node name="WoodenBlock10" parent="Blocks" instance=ExtResource("4_6ssws")]
+position = Vector2(982, 577)
+
+[node name="WoodenBlock11" parent="Blocks" instance=ExtResource("4_6ssws")]
+position = Vector2(1034, 577)
+
+[node name="WoodenBlock12" parent="Blocks" instance=ExtResource("4_6ssws")]
+position = Vector2(1086, 577)
+
+[node name="WoodenBlock13" parent="Blocks" instance=ExtResource("4_6ssws")]
+position = Vector2(1009, 525)
+
+[node name="WoodenBlock14" parent="Blocks" instance=ExtResource("4_6ssws")]
+position = Vector2(1061, 525)
+
+[node name="WoodenBlock15" parent="Blocks" instance=ExtResource("4_6ssws")]
+position = Vector2(1036, 476)

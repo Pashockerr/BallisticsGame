@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw4nb0cfqbdky"]
+
+[ext_resource type="PackedScene" uid="uid://6nvnusmi8hj6" path="res://GameObjects/ProjectileLaunchers/BaseProjectileLauncher/BaseProjectileLauncher.tscn" id="1_gaefd"]
+
+[node name="SingleProjectileLauncher" instance=ExtResource("1_gaefd")]

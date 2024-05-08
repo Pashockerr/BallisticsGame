@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://ct0i28nfm072l"]
+
+[ext_resource type="Script" path="res://UI/PauseMenu/Scripts/HandleEsc.cs" id="1_n6j3c"]
+[ext_resource type="Script" path="res://UI/PauseMenu/Scripts/PauseButton.cs" id="2_mhuvf"]
+[ext_resource type="Script" path="res://UI/PauseMenu/Scripts/ResumeButton.cs" id="2_xq18k"]
+[ext_resource type="Script" path="res://Scripts/SwitchLevelButton.cs" id="3_rre42"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_16rhp"]
+font_size = 50
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_n6j3c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="PauseLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Пауза"
+label_settings = SubResource("LabelSettings_16rhp")
+
+[node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer" node_paths=PackedStringArray("_pauseMenuContainer")]
+layout_mode = 2
+text = "Продолжить"
+script = ExtResource("2_xq18k")
+_pauseMenuContainer = NodePath("../..")
+
+[node name="ReplayButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Играть заново"
+script = ExtResource("3_rre42")
+
+[node name="LevelsButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Уровни"
+script = ExtResource("3_rre42")
+_levelName = "SelectLevels"
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Главное меню"
+script = ExtResource("3_rre42")
+
+[node name="PauseButton" type="Button" parent="." node_paths=PackedStringArray("_pauseMenuContainer")]
+layout_mode = 2
+offset_right = 56.0
+offset_bottom = 31.0
+text = "Пауза"
+script = ExtResource("2_mhuvf")
+_pauseMenuContainer = NodePath("../CenterContainer")
