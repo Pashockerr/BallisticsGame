@@ -30,7 +30,7 @@ layout_mode = 2
 [node name="GridContainer" type="GridContainer" parent="LevelsLayer/Levels/CenterContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
-columns = 3
+columns = 5
 
 [node name="Level1Button" type="Button" parent="LevelsLayer/Levels/CenterContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -55,6 +55,12 @@ layout_mode = 2
 text = "Уровень 4"
 script = ExtResource("2_vqthv")
 _levelName = "Level4"
+
+[node name="Level5Button" type="Button" parent="LevelsLayer/Levels/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Уровень 5"
+script = ExtResource("2_vqthv")
+_levelName = "Level5"
 
 [node name="MainMenuButton" type="Button" parent="LevelsLayer/Levels/CenterContainer/VBoxContainer"]
 layout_mode = 2

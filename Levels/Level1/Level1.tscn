@@ -171,8 +171,9 @@ _bumpersVerticalOffset = 10.0
 _labelVerticalOffset = 10.0
 _labelSettings = SubResource("LabelSettings_5jbjx")
 
-[node name="CannonballProjectile" parent="." index="10" instance=ExtResource("6_2kbhn")]
+[node name="CannonballProjectile" parent="." index="10" node_paths=PackedStringArray("_pauseMenuContainer") instance=ExtResource("6_2kbhn")]
 mass = 10.0
+_pauseMenuContainer = NodePath("../PauseMenuLayer/PauseMenu/CenterContainer")
 
 [node name="CollisionShape2D" parent="CannonballProjectile" index="0"]
 position = Vector2(128, 687)

@@ -36,9 +36,10 @@ _levelName = "Level3"
 script = ExtResource("2_epmtw")
 _levelName = "Level2"
 
-[node name="CannonballProjectile" parent="." index="3" instance=ExtResource("2_n27xp")]
+[node name="CannonballProjectile" parent="." index="3" node_paths=PackedStringArray("_pauseMenuContainer") instance=ExtResource("2_n27xp")]
 position = Vector2(50, 165)
 mass = 10.0
+_pauseMenuContainer = NodePath("../PauseMenuLayer/PauseMenu/CenterContainer")
 
 [node name="HeightMeasureLine" type="Node2D" parent="." index="4"]
 script = ExtResource("4_s1v4g")

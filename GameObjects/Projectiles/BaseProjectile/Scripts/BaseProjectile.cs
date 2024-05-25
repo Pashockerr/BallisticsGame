@@ -12,6 +12,9 @@ namespace Scripts.Projectiles
 		private LineEdit _velocityEdit;
 		[Export]
 		private int _launchCounter = 1;
+		[Export]
+		private Container _pauseMenuContainer;
+		public bool TouchedWinArea = false;
 		public override void _Ready()
 		{
 			ContactMonitor = true;
@@ -26,7 +29,10 @@ namespace Scripts.Projectiles
 			SetDeferred("freeze", true);
 			BodyEntered += (Node n) =>{
 				if(n.IsInGroup("Floor")){
-					SetDeferred("freeze", true);
+					if(!TouchedWinArea){
+						_pauseMenuContainer.Show();
+						SetDeferred("freeze", true);
+					}
 				}
 			};
 		}

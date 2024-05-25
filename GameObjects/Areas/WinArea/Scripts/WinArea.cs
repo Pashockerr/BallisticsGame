@@ -1,4 +1,5 @@
 using Godot;
+using Scripts.Projectiles;
 using System;
 
 namespace Scripts{
@@ -12,7 +13,10 @@ namespace Scripts{
 		{
 			BodyEntered += (Node2D n) =>{
 				if(n.IsInGroup("Projectiles")){
-					_winMenuContainer.Show();
+					_winMenuContainer.Show(); 
+					if(n is BaseProjectile){
+						(n as BaseProjectile).TouchedWinArea = true;
+					}
 				}
 			};
 			_showAreaButton.Pressed += () =>{

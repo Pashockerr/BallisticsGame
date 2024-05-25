@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bi68fx36lkfrc"]
+[gd_scene load_steps=16 format=3 uid="uid://bi68fx36lkfrc"]
 
 [ext_resource type="PackedScene" uid="uid://cu11h34u3qdxx" path="res://Levels/BaseLevel/BaseLevel.tscn" id="1_0vmlp"]
 [ext_resource type="Texture2D" uid="uid://dgm8ae04yi47v" path="res://Sprites/background1.png" id="2_2loek"]
@@ -14,6 +14,9 @@
 [ext_resource type="Script" path="res://Scripts/HorizontalMeasureLine.cs" id="12_0l1a5"]
 [ext_resource type="LabelSettings" uid="uid://bvs2ydrthk7tj" path="res://UI/LabelSettings/DefaultLabelSettings.tres" id="13_4nvu6"]
 [ext_resource type="Script" path="res://Scripts/VerticalMeasureLine.cs" id="13_icvnc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufyon"]
+size = Vector2(495, 500)
 
 [node name="Level3" instance=ExtResource("1_0vmlp")]
 
@@ -50,15 +53,18 @@ position = Vector2(1180, 255)
 scale = Vector2(0.2, 0.04)
 
 [node name="CollisionShape2D" parent="Floor2" index="0"]
+position = Vector2(5, 0)
 scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_ufyon")
 
 [node name="Sprite2D" parent="Floor2/CollisionShape2D" index="0"]
 scale = Vector2(5, 5)
 texture = ExtResource("5_it4dt")
 
-[node name="CannonballProjectile" parent="." index="6" instance=ExtResource("6_g8tb7")]
+[node name="CannonballProjectile" parent="." index="6" node_paths=PackedStringArray("_pauseMenuContainer") instance=ExtResource("6_g8tb7")]
 position = Vector2(50, 630)
 mass = 5.0
+_pauseMenuContainer = NodePath("../PauseMenuLayer/PauseMenu/CenterContainer")
 
 [node name="Blocks" type="CanvasGroup" parent="." index="7"]
 

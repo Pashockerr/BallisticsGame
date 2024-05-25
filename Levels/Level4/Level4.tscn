@@ -76,9 +76,10 @@ shape = SubResource("RectangleShape2D_6fbwc")
 scale = Vector2(100, 5)
 texture = ExtResource("6_shta1")
 
-[node name="CannonballProjectile" parent="." index="8" instance=ExtResource("8_15704")]
+[node name="CannonballProjectile" parent="." index="8" node_paths=PackedStringArray("_pauseMenuContainer") instance=ExtResource("8_15704")]
 position = Vector2(50, 630)
 mass = 10.0
+_pauseMenuContainer = NodePath("../PauseMenuLayer/PauseMenu/CenterContainer")
 
 [node name="CanvasGroup" type="CanvasGroup" parent="." index="9"]
 position = Vector2(-100, -2)
