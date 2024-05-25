@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bl3m241pwkrq0"]
+
+[ext_resource type="PackedScene" uid="uid://cu11h34u3qdxx" path="res://Levels/BaseLevel/BaseLevel.tscn" id="1_6xpom"]
+[ext_resource type="PackedScene" uid="uid://calobx1vjb41u" path="res://UI/WinAreaInterface/WinAreaInterface.tscn" id="2_jbl3r"]
+[ext_resource type="PackedScene" uid="uid://b85gn31jvstvj" path="res://GameObjects/Areas/Floor/Floor.tscn" id="3_0mjlg"]
+[ext_resource type="Texture2D" uid="uid://7e8n7sca6d5p" path="res://Sprites/floor_moon.png" id="4_4vvaf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iewi7"]
+size = Vector2(10000, 500)
+
+[node name="Level5" instance=ExtResource("1_6xpom")]
+
+[node name="WinAreaInterfaceLayer" type="CanvasLayer" parent="." index="2"]
+
+[node name="WinAreaInterface" parent="WinAreaInterfaceLayer" index="0" instance=ExtResource("2_jbl3r")]
+
+[node name="Floor" parent="." index="3" instance=ExtResource("3_0mjlg")]
+position = Vector2(608, 912)
+
+[node name="CollisionShape2D" parent="Floor" index="0"]
+shape = SubResource("RectangleShape2D_iewi7")
+
+[node name="Sprite2D" parent="Floor/CollisionShape2D" index="0"]
+scale = Vector2(100, 5)
+texture = ExtResource("4_4vvaf")
+
+[editable path="PauseMenuLayer/PauseMenu"]
+[editable path="WinMenuLayer/WinMenu"]
+[editable path="WinAreaInterfaceLayer/WinAreaInterface"]
+[editable path="Floor"]

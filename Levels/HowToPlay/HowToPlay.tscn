@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://ofx7472th0kr"]
+
+[ext_resource type="Script" path="res://Levels/HowToPlay/Scripts/MainMenuButton.cs" id="1_mofj7"]
+
+[node name="HowToPlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[font_size=50][b]Как играть?[/b][/font_size]
+Ваша задача - попасть шариком в цель. Цель можно увидеть, нажав в правом верхнем углу экрана кнпоку \"Показать цель\".
+
+В верхней части экрана находятся поля для ввода различных значений (начальной скорости, угла запуска). [b][i]Целую и дробную часть десятичных дробей следует разделять запятой[/i][/b]. На некоторых уровнях одно или несколько значений уже заданы за вас. Это значит, что оставшиеся значения вам необходимо рассчитать, исходя из остальных условий.
+
+Расстояния между объектами отмечаются отрезками, над или под которыми находятся текстовые обозначения (L - длина, H - высота). Все обозначения записаны в системе СИ с указанием единиц измерения, если не указано иное. Возможно использование десятичных приставок. По умолчанию ускорение свободного падения [b]g[/b] на всех уровнях равно [b]9,8 м/с^2[/b], если не указано иное. Силами сопротивления окружающей среды при прохождении уровней следует пренебрегать, если не указано иное."
+scroll_active = false
+
+[node name="ToMainMenuButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "В главное меню"
+script = ExtResource("1_mofj7")

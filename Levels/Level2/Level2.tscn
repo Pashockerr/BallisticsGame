@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://pa4do3iy2c8n"]
+[gd_scene load_steps=15 format=3 uid="uid://pa4do3iy2c8n"]
 
 [ext_resource type="PackedScene" uid="uid://cu11h34u3qdxx" path="res://Levels/BaseLevel/BaseLevel.tscn" id="1_7qlgu"]
-[ext_resource type="Texture2D" uid="uid://dgm8ae04yi47v" path="res://Sprites/Level1/background1.png" id="2_1iu88"]
+[ext_resource type="Texture2D" uid="uid://dgm8ae04yi47v" path="res://Sprites/background1.png" id="2_1iu88"]
 [ext_resource type="Script" path="res://Scripts/SwitchLevelButton.cs" id="2_epmtw"]
 [ext_resource type="PackedScene" uid="uid://crfiigt1mex2e" path="res://GameObjects/Projectiles/CannonballProjectile/CannonballProjectile.tscn" id="2_n27xp"]
 [ext_resource type="Texture2D" uid="uid://ckgxwu04x3v0p" path="res://Sprites/floor.png" id="4_elh7n"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://c8vdkbfe6e3b8" path="res://GameObjects/Areas/WinArea/WinArea.tscn" id="6_oaauj"]
 [ext_resource type="PackedScene" uid="uid://calobx1vjb41u" path="res://UI/WinAreaInterface/WinAreaInterface.tscn" id="7_asojb"]
 [ext_resource type="PackedScene" uid="uid://dw4nb0cfqbdky" path="res://GameObjects/ProjectileLaunchers/SingleProjectileLauncher/SingleProjectileLauncher.tscn" id="9_3dwmh"]
+[ext_resource type="Script" path="res://Scripts/HorizontalMeasureLine.cs" id="12_ome6b"]
+[ext_resource type="PackedScene" uid="uid://bioggbs76wigu" path="res://GameObjects/Obstacles/WoodenBox/WoodenBlock.tscn" id="13_hexke"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06mpv"]
 size = Vector2(10000, 500)
@@ -18,9 +20,17 @@ size = Vector2(10000, 500)
 [node name="Level2" instance=ExtResource("1_7qlgu")]
 
 [node name="Background" type="Sprite2D" parent="." index="0"]
+visible = false
 position = Vector2(664, 948)
 scale = Vector2(100, 100)
 texture = ExtResource("2_1iu88")
+
+[node name="ReplayButton" parent="PauseMenuLayer/PauseMenu/CenterContainer/VBoxContainer" index="2"]
+_levelName = "Level2"
+
+[node name="NextLevelButton" parent="WinMenuLayer/WinMenu/WinMenuContainer/VBoxContainer" index="1"]
+script = ExtResource("2_epmtw")
+_levelName = "Level3"
 
 [node name="ReplayLevelButton" parent="WinMenuLayer/WinMenu/WinMenuContainer/VBoxContainer" index="2"]
 script = ExtResource("2_epmtw")
@@ -39,7 +49,7 @@ _bumpersHorizontalOffset = -10.0
 _labelHorizontalOffset = 10.0
 _labelSettings = ExtResource("5_ymyy8")
 
-[node name="Floor" type="StaticBody2D" parent="." index="5"]
+[node name="Floor" type="StaticBody2D" parent="." index="5" groups=["Floor"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" index="0"]
 position = Vector2(635, 940)
@@ -53,20 +63,59 @@ texture = ExtResource("4_elh7n")
 
 [node name="ProjectileLauncherInterface" parent="ProjectileLauncherInterface" index="0" instance=ExtResource("5_ocr0f")]
 
-[node name="WinArea" parent="." index="7" node_paths=PackedStringArray("_showAreaButton", "_winMenuContainer") instance=ExtResource("6_oaauj")]
+[node name="AngleLineEdit" parent="ProjectileLauncherInterface/ProjectileLauncherInterface/CenterContainer/HBoxContainer" index="1"]
+text = "15"
+editable = false
+
+[node name="WinAreaInterfaceLayer" type="CanvasLayer" parent="." index="7"]
+
+[node name="WinAreaInterface" parent="WinAreaInterfaceLayer" index="0" instance=ExtResource("7_asojb")]
+
+[node name="SingleProjectileLauncher" parent="." index="8" node_paths=PackedStringArray("_launchable") instance=ExtResource("9_3dwmh")]
+position = Vector2(50, 165)
+_launchable = NodePath("../CannonballProjectile")
+
+[node name="Blocks" type="CanvasGroup" parent="." index="9"]
+
+[node name="WoodenBlock" parent="Blocks" index="0" instance=ExtResource("13_hexke")]
+position = Vector2(1150, 664)
+
+[node name="WoodenBlock2" parent="Blocks" index="1" instance=ExtResource("13_hexke")]
+position = Vector2(1100, 664)
+
+[node name="WoodenBlock4" parent="Blocks" index="2" instance=ExtResource("13_hexke")]
+position = Vector2(1125, 612)
+
+[node name="WoodenBlock5" parent="Blocks" index="3" instance=ExtResource("13_hexke")]
+position = Vector2(1175, 612)
+
+[node name="WoodenBlock6" parent="Blocks" index="4" instance=ExtResource("13_hexke")]
+position = Vector2(1150, 561)
+
+[node name="WoodenBlock3" parent="Blocks" index="5" instance=ExtResource("13_hexke")]
+position = Vector2(1200, 664)
+
+[node name="WinArea" parent="." index="10" node_paths=PackedStringArray("_showAreaButton", "_winMenuContainer") instance=ExtResource("6_oaauj")]
 visible = false
 position = Vector2(0, -11)
 _showAreaButton = NodePath("../WinAreaInterfaceLayer/WinAreaInterface/CenterContainer/ShowWinAreaButton")
 _winMenuContainer = NodePath("../WinMenuLayer/WinMenu/WinMenuContainer")
 
-[node name="WinAreaInterfaceLayer" type="CanvasLayer" parent="." index="8"]
+[node name="CollisionShape2D" parent="WinArea" index="0"]
+position = Vector2(1150, 650)
 
-[node name="WinAreaInterface" parent="WinAreaInterfaceLayer" index="0" instance=ExtResource("7_asojb")]
-
-[node name="SingleProjectileLauncher" parent="." index="9" node_paths=PackedStringArray("_launchable") instance=ExtResource("9_3dwmh")]
-position = Vector2(50, 165)
-_launchable = NodePath("../CannonballProjectile")
+[node name="LengthMeasureLine" type="Node2D" parent="." index="11"]
+script = ExtResource("12_ome6b")
+_startPosition = Vector2(50, 650)
+_endPosition = Vector2(1150, 650)
+_bumpersLength = 30.0
+_bumpersVerticalOffset = 10.0
+_labelVerticalOffset = 10.0
+_labelSettings = ExtResource("5_ymyy8")
 
 [editable path="PauseMenuLayer/PauseMenu"]
 [editable path="WinMenuLayer/WinMenu"]
+[editable path="CannonballProjectile"]
+[editable path="ProjectileLauncherInterface/ProjectileLauncherInterface"]
 [editable path="WinAreaInterfaceLayer/WinAreaInterface"]
+[editable path="WinArea"]

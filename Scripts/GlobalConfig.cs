@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.Diagnostics;
 
 namespace Scripts{
 	public partial class GlobalConfig : Node

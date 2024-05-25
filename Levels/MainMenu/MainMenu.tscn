@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://do0jpv75a2sgv"]
+[gd_scene load_steps=10 format=3 uid="uid://do0jpv75a2sgv"]
 
 [ext_resource type="Script" path="res://Levels/MainMenu/Scripts/LevelsButton.cs" id="1_07sdq"]
-[ext_resource type="Texture2D" uid="uid://dcn7nnjkdqiji" path="res://icon.svg" id="2_4p5bs"]
+[ext_resource type="Script" path="res://Scripts/SwitchLevelButton.cs" id="2_krgoc"]
 [ext_resource type="Script" path="res://Levels/MainMenu/Scripts/QuitGameButton.cs" id="2_sye1m"]
 [ext_resource type="Script" path="res://Levels/MainMenu/Scripts/TimeSlower.cs" id="3_y603o"]
 [ext_resource type="PackedScene" uid="uid://bioggbs76wigu" path="res://GameObjects/Obstacles/WoodenBox/WoodenBlock.tscn" id="4_6ssws"]
+[ext_resource type="Texture2D" uid="uid://duk77fqg0ind5" path="res://GameObjects/Projectiles/CannonballProjectile/Sprites/cannonball.png" id="4_qixmg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u5b1i"]
 font_size = 50
@@ -48,6 +49,12 @@ layout_mode = 2
 text = "Уровни"
 script = ExtResource("1_07sdq")
 
+[node name="HowToPlayButton" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Как играть?"
+script = ExtResource("2_krgoc")
+_levelName = "HowToPlay"
+
 [node name="QuitGameButton" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Выйти из игры"
@@ -73,8 +80,8 @@ shape = SubResource("CircleShape2D_gnnyq")
 debug_color = Color(0, 0.648355, 0.183499, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="Cannonball/CollisionShape2D"]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_4p5bs")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_qixmg")
 
 [node name="Blocks" type="CanvasGroup" parent="."]
 

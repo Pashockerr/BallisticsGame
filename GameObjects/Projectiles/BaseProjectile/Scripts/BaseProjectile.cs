@@ -14,6 +14,8 @@ namespace Scripts.Projectiles
 		private int _launchCounter = 1;
 		public override void _Ready()
 		{
+			ContactMonitor = true;
+			MaxContactsReported = 100;
 			_angleEdit = (from n in GetTree().GetNodesInGroup("ProjectileLauncherInterface")
 						where n is LineEdit && n.UniqueNameInOwner && n.Name == "AngleLineEdit"
 						select n).First() as LineEdit;
@@ -21,7 +23,12 @@ namespace Scripts.Projectiles
 						where n is LineEdit && n.UniqueNameInOwner && n.Name == "VelocityLineEdit"
 						select n).First() as LineEdit;
 
-			Freeze = true;
+			SetDeferred("freeze", true);
+			BodyEntered += (Node n) =>{
+				if(n.IsInGroup("Floor")){
+					SetDeferred("freeze", true);
+				}
+			};
 		}
 
 		public override void _Process(double delta)
@@ -33,7 +40,7 @@ namespace Scripts.Projectiles
 			if(_launchCounter <= 0) return;
 			var angleRad = float.Parse(_angleEdit.Text) / 360 * Math.PI * 2;
 			var velocity = float.Parse(_velocityEdit.Text);
-			Freeze = false;
+			SetDeferred("freeze", false);
 			LinearVelocity = new Vector2
 			{
 				X = (float)Math.Cos(angleRad) * velocity * 100,
